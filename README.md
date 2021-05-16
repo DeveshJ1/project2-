@@ -22,8 +22,11 @@ PROGRAM USAGE
 The program should run in a loop that allows the user to issue different queries. The three types of queries are:
 
 title KEYWORD
+
 description KEYWORD
+
 url KEYWORD
+
 In the above, the words in uppercase indicate keywords that will be replaced by actual values, for example title COVID, description immigration or url .gov.
 
 In the first case, title KEYWORD, the program should display the entries from the data set whose titles (headlines) contain the KEYWORD specified by the user.
@@ -67,8 +70,11 @@ All output from the user interaction should be printed to the standard output st
 Matching results display: If the query entered by the user matches one or more DataSet, the information should be displayed in the following format:
 
 DATE
+
 NAME
+
 DESCRIPTION
+
 LINKS
 
 -----
@@ -77,12 +83,15 @@ All the words in uppercase letters are place-holders for the actual values from 
 If date is missing from the data set, it should be skipped in the result.
 
 The output should contain a single blank line, followed by a line with five dashes, -----, after each result. This will visually separate the results for improved readability.
+
 DATA STORAGE/ORGANIZATION
+
 You need to provide an implementation of several classes that store the data and compute the results when the program is executed.
 
 In particular, your program must implement and use the following classes. You may implement additional classes and additional methods in the required classes, if you wish.
 
 Date class
+
 This class should represent a calendar date. It should store the information about the year, month and day.
 
 This class should provide a three parameter constructor that validates and sets the year, month and day.
@@ -98,13 +107,16 @@ The class should override the equals method from the Object class. Two Date obje
 The class should override the toString method from the Object class. It should return a String matching the following pattern: YYYY-MM-DD.
 
 DataSet class
+
 This class should represent a data set with all of its characteristics (date, title/headline, description/text, list of links, and any other information you may decide may be useful to store).
 
 This class should provide a three parameter constructor that validates and sets the title, description and a list of links.
 
 public DataSet (String title, String description, ArrayList<URL> links)
 
-Any non-empty string is a valid title or description. If this constructor is called with a null or an empty title or description, it should throw an instance of IllegalArgumentException with an appropriate message.
+Any non-empty string is a valid title or description. If this constructor is called with a null or an empty title or description, it should throw an instance of 
+
+IllegalArgumentException with an appropriate message.
 
 links should be a non-empty list of URL objects. Note that URL is a class defined in Java (you do not need to define it yourself). If this constructor is called with a null or an empty list as links, it should throw an instance of the IllegalArgumentException with an appropriate message.
 
@@ -120,17 +132,23 @@ The class should override the equals method from the Object class. Two DataSet o
 The class should override the toString method from the Object class. It should return a multi-line String matching the following pattern
 
   DATE
+  
   NAME
+  
   DESCRIPTION
+  
   LINKS
+  
 All the words in uppercase letters are place-holders for the actual values from the data set.
 
 If date is missing from the data set, it should be skipped in the result in the result. The description, in most cases, will be a long multi-line text. The links should be displayed one per line.
 
 DataSetList class
+
 The DataSetList class should be used to store all the DataSet objects. This class should inherit from the ArrayList<DataSet> class.
 
 The class needs to provide a default constructor that creates an empty DataSetList object.
+
 In addition, the class should implement the following two methods:
 
 public DataSetList getByTitle ( String keyword )
@@ -152,6 +170,7 @@ This method should return a list of all DataSet objects for which the links cont
 If there are no elements in the list that match the given criteria, this method should return null.
 
 DataIsPlural class
+
 The DataIsPlural class is the actual program. This is the class that should contain the main method. It is responsible for opening and reading the data file, obtaining user input, performing some data validation and handling all errors that may occur (in particular, it should handle any exceptions thrown by your other classes and terminate gracefully, if need be, with a friendly error message presented to the user: The program should never just reprint the exception message as a way of handling an exception. These messages are rarely readable to the ordinary user and make it seem like the program crashed in response to the exception.
 
 You may implement other methods in this class to modularize the design.
